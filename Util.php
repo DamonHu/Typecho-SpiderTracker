@@ -3,7 +3,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) {
     exit;
 }
 
-class RobotsPlusPlus_Util
+class SpiderTrack_Util
 {
 
 
@@ -14,11 +14,11 @@ class RobotsPlusPlus_Util
      */
     public static function activate()
     {
-        Helper::addPanel(1, 'RobotsPlusPlus/Logs.php', '蜘蛛日志', '查看蜘蛛日志', 'administrator');
-        Helper::addAction('robots-logs-edit', 'RobotsPlusPlus_Widget');
-        Typecho_Plugin::factory('Widget_Archive')->header = array('RobotsPlusPlus_Util', 'isBot');
+        Helper::addPanel(1, 'SpiderTrack/Logs.php', '蜘蛛日志', '查看蜘蛛日志', 'administrator');
+        Helper::addAction('robots-logs-edit', 'SpiderTrack_Widget');
+        Typecho_Plugin::factory('Widget_Archive')->header = array('SpiderTrack_Util', 'isBot');
         self::install();
-        return '插件启用成功。请进行<a href="options-plugin.php?config=RobotsPlusPlus">初始化设置</a>';
+        return '插件启用成功。请进行<a href="options-plugin.php?config=SpiderTrack">初始化设置</a>';
     }
 
     /**
@@ -28,11 +28,11 @@ class RobotsPlusPlus_Util
      */
     public static function deactivate()
     {
-        $config = Typecho_Widget::widget('Widget_Options')->plugin('RobotsPlusPlus');
+        $config = Typecho_Widget::widget('Widget_Options')->plugin('SpiderTrack');
         $db = Typecho_Db::get();
-        $db->query($db->delete('table.options')->where('table.options.name = ? AND table.options.user = ?', 'license:RobotsPlusPlus', 0));
+        $db->query($db->delete('table.options')->where('table.options.name = ? AND table.options.user = ?', 'license:SpiderTrack', 0));
         $isDrop = $config->isDrop;
-        Helper::removePanel(1, 'RobotsPlusPlus/Logs.php');
+        Helper::removePanel(1, 'SpiderTrack/Logs.php');
         Helper::removeAction('robots-logs-edit');
         if ($isDrop == 1) {
             $prefix = $db->getPrefix();
@@ -40,6 +40,26 @@ class RobotsPlusPlus_Util
             return "插件已被禁用，数据表已未清除";
         }
         return "插件已被禁用，数据表未被清除";
+    }
+
+    /**
+     * 获取蜘蛛列表
+     *
+     * @return void
+     */
+    public static function defaultBotsList()
+    {   
+        $bots = array(
+        'baidu' => '百度',
+        'google' => '谷歌',
+        'sogou' => '搜狗',
+        'youdao' => '有道',
+        'soso' => '搜搜',
+        'bing' => '必应',
+        'yahoo' => '雅虎',
+        '360' => '360搜索'
+        );
+        return $bots;
     }
 
     /**
@@ -134,10 +154,10 @@ class RobotsPlusPlus_Util
     public static function getBotsList()
     {
         $bots = array();
-        $_bots = explode("|", str_replace(array("\r\n", "\r", "\n"), "|", self::getConfig()->botList));
-        foreach ($_bots as $_bot) {
-            $_bot = explode("=>", $_bot);
-            $bots[strval($_bot[0])] = $_bot[1];
+        $_defaultBots = self::defaultBotsList();
+        $_bots = self::getConfig()->botList;
+        foreach ($_bots as $value) {
+            $bots[strval($value)] = $_defaultBots[strval($value)];
         }
         return $bots;
     }
@@ -162,6 +182,6 @@ class RobotsPlusPlus_Util
      */
     public static function getConfig()
     {
-        return Typecho_Widget::widget('Widget_Options')->plugin('RobotsPlusPlus');
+        return Typecho_Widget::widget('Widget_Options')->plugin('SpiderTrack');
     }
 }
