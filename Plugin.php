@@ -3,7 +3,7 @@
 /**
  * 蜘蛛来访日志插件，记录蜘蛛爬行的时间及其网址
  *
- * @package RobotsPlusPlus
+ * @package SpiderTrack
  * @author  Ryan, YoviSun, Shion
  * @version 2.0.6
  * @update: 2021.08.14
@@ -13,32 +13,25 @@ if (!defined('__TYPECHO_ROOT_DIR__')) {
     exit;
 }
 
-class RobotsPlusPlus_Plugin implements Typecho_Plugin_Interface
+class SpiderTrack_Plugin implements Typecho_Plugin_Interface
 {
     public static function activate()
     {
-        RobotsPlusPlus_Util::activate();
+        SpiderTrack_Util::activate();
     }
 
     public static function deactivate()
     {
-        RobotsPlusPlus_Util::deactivate();
+        SpiderTrack_Util::deactivate();
     }
 
     public static function config(Typecho_Widget_Helper_Form $form)
     {
-        $bots = array(
-            'baidu=>百度',
-            'google=>谷歌',
-            'sogou=>搜狗',
-            'youdao=>有道',
-            'soso=>搜搜',
-            'bing=>必应',
-            'yahoo=>雅虎',
-            '360=>360搜索'
-        );
+        $bots = SpiderTrack_Util::defaultBotsList();
 
-        $botList = new Typecho_Widget_Helper_Form_Element_Textarea('botList', null, implode("\n", $bots), _t('蜘蛛记录设置'), _t('请按照格式填入蜘蛛信息，英文关键字不能超过16个字符'));
+        $botList = new Typecho_Widget_Helper_Form_Element_Checkbox(
+			'botList', $bots, ['baidu', 'google', 'sogou', 'youdao', 'soso', 'bing', 'yahoo', '360'],
+          	'蜘蛛记录设置:', '请选择要记录的蜘蛛日志');
 
         $pageSize = new Typecho_Widget_Helper_Form_Element_Text(
             'pageSize',
