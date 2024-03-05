@@ -10,7 +10,6 @@
  * @link http://doufu.ru
  */
 
-include 'common.php';
 include 'header.php';
 include 'menu.php';
 if (!defined('__TYPECHO_ROOT_DIR__')) {
