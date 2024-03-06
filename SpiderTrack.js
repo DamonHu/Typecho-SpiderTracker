@@ -1,32 +1,29 @@
-function showIpLocation() {
-    $(".robotx-location").text("正在查询...");
-    $(".robotx-ip").each(function() {
-        var myd = $(this);
-        $.ajax({
-            url: "https://api.ip.sb/geoip/" + myd.text(),
-            type: 'get',
-            dataType: 'json',
-            success: function(str) {
-                data = eval(str);
-                myd.next().text(data.country + data.province + data.city + data.isp).css("color", "#BD6800");
-            },
-            error: function(e) {
-                myd.next().text("无该 IP 详细信息").css("color", "#f00");
-            }
-        });
+function showIpLocation(event, ip) {
+    $(event).text("正在查询...");
+    $.ajax({
+        url: "https://api.ip.sb/geoip/" + ip,
+        type: 'get',
+        dataType: 'json',
+        success: function (str) {
+            $(event).text("国家:" + str.country + "\n城市:" + str.city + "\n运营商:" + str.isp).css("color", "#BD6800");
+        },
+        error: function (e) {
+            console.log("ip查询错误", e)
+            $(event).text("查询错误").css("color", "#f00");
+        }
     });
 }
-$(document).ready(function() {
-    $(".check-ip-location").click(showIpLocation);
-    $(".robotx-ip").click(function() {
+
+$(document).ready(function () {
+    $(".robotx-ip").click(function () {
         $('.search-ip').val($(this).data('ip'));
         $('.search-btn').trigger('click');
     });
-    $(".robotx-bot-name").click(function() {
+    $(".robotx-bot-name").click(function () {
         $('.search-bot').val($(this).data('bot'));
         $('.search-btn').trigger('click');
     });
-    $(".clear-search-ip").click(function() {
+    $(".clear-search-ip").click(function () {
         $('.search-ip').val("");
         $('.search-btn').trigger('click');
     });

@@ -96,7 +96,8 @@ $options = Typecho_Widget::widget('Widget_Options');
                                             <div class="robotx-ip"
                                                  data-ip="<?php $robotsArchive->ip(); ?>"><?php $robotsArchive->ip(); ?></div>
                                                  <?php if (SpiderTrack_Util::isGeoAvailable()) : ?>
-                                                    <a class="check-ip-location">查询位置</a>
+                                                    <a class="check-ip-location" onclick="showIpLocation(this, '<?php $robotsArchive->ip(); ?>')"
+                                                        href="#" >查询IP位置</a>
                                                 <?php endif;?>
                                             <div class="robotx-location"></div>
                                         </td>
@@ -160,8 +161,8 @@ $options = Typecho_Widget::widget('Widget_Options');
     }
 
     .check-ip-location {
-        padding-left: 12px;
         cursor: pointer;
+        white-space: pre-line;
     }
 
     .robotx-bot-name,
