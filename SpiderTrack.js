@@ -3,7 +3,7 @@ function showIpLocation() {
     $(".robotx-ip").each(function() {
         var myd = $(this);
         $.ajax({
-            url: "https://ip.huomao.com/ip?ip=" + myd.text(),
+            url: "https://api.ip.sb/geoip/" + myd.text(),
             type: 'get',
             dataType: 'json',
             success: function(str) {
