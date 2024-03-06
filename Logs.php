@@ -4,10 +4,8 @@
  * 蜘蛛来访日志插件，记录蜘蛛爬行的时间及其网址
  *
  * @package SpiderTrack
- * @author  Ryan, YoviSun, Shion
- * @version 2.0.3
- * @update: 2020.05.30
- * @link http://doufu.ru
+ * @author  DamonHu
+ * @link https://ddceo.com/blog/1261.html
  */
 
 include 'header.php';
