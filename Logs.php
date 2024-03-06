@@ -3,7 +3,7 @@
 /**
  * 蜘蛛来访日志插件，记录蜘蛛爬行的时间及其网址
  *
- * @package SpiderTrack
+ * @package SpiderTracker
  * @author  DamonHu
  * @link https://ddceo.com/blog/1261.html
  */
@@ -13,7 +13,7 @@ include 'menu.php';
 if (!defined('__TYPECHO_ROOT_DIR__')) {
     exit;
 }
-$robotsArchive = Typecho_Widget::widget('SpiderTrack_Widget');
+$robotsArchive = Typecho_Widget::widget('SpiderTracker_Widget');
 $options = Typecho_Widget::widget('Widget_Options');
 ?>
 <div class="main">
@@ -23,7 +23,7 @@ $options = Typecho_Widget::widget('Widget_Options');
             <div class="col-mb-12 typecho-list">
                 <div class="typecho-list-operate clearfix">
                     <form method="get" action="<?php $options->adminUrl('extending.php'); ?>">
-                        <input type="hidden" name="panel" value="SpiderTrack/Logs.php"/>
+                        <input type="hidden" name="panel" value="SpiderTracker/Logs.php"/>
                         <div class="operate">
                             <label><i class="sr-only"><?php _e('全选'); ?></i><input type="checkbox"
                                                                                    class="typecho-table-select-all"/></label>
@@ -47,7 +47,7 @@ $options = Typecho_Widget::widget('Widget_Options');
                             </div>
                             <select class="search-bot" name="bot">
                                 <option value=""><?php _e('所有'); ?></option>
-                                <?php foreach (SpiderTrack_Util::getBotsList() as $id => $name) : ?>
+                                <?php foreach (SpiderTracker_Util::getBotsList() as $id => $name) : ?>
                                     <option value="<?php echo $id; ?>" <?php if ($request->get('bot') == $id) : ?> selected="true" <?php endif; ?>><?php echo $name; ?></option>
                                 <?php endforeach; ?>
                             </select>
@@ -57,7 +57,7 @@ $options = Typecho_Widget::widget('Widget_Options');
                 </div>
 
                 <form class="operate-form" method="post"
-                      action="<?php $options->adminUrl('extending.php?panel=SpiderTrack%2FLogs.php'); ?>">
+                      action="<?php $options->adminUrl('extending.php?panel=SpiderTracker%2FLogs.php'); ?>">
                     <div class="typecho-table-wrap">
                         <table class="typecho-list-table">
                             <colgroup>
@@ -95,7 +95,7 @@ $options = Typecho_Widget::widget('Widget_Options');
                                         <td>
                                             <div class="robotx-ip"
                                                  data-ip="<?php $robotsArchive->ip(); ?>"><?php $robotsArchive->ip(); ?></div>
-                                                 <?php if (SpiderTrack_Util::isGeoAvailable()) : ?>
+                                                 <?php if (SpiderTracker_Util::isGeoAvailable()) : ?>
                                                     <a class="check-ip-location" onclick="showIpLocation(this, '<?php $robotsArchive->ip(); ?>')"
                                                         href="#" >查询IP位置</a>
                                                 <?php endif;?>
@@ -176,4 +176,4 @@ include 'common-js.php';
 include 'table-js.php';
 include 'footer.php';
 ?>
-<script src="<?php Helper::options()->pluginUrl('SpiderTrack/SpiderTrack.js'); ?>"></script>
+<script src="<?php Helper::options()->pluginUrl('SpiderTracker/SpiderTracker.js'); ?>"></script>

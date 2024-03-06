@@ -1,6 +1,6 @@
-# Typecho-SpiderTrack
+# Typecho-SpiderTracker
 
-Typecho的蜘蛛抓取记录插件. SpiderTrack plugin for Typecho
+Typecho的蜘蛛抓取记录插件. SpiderTracker plugin for Typecho
 
 ### 历史背景
 
@@ -10,7 +10,7 @@ Typecho的蜘蛛抓取记录插件. SpiderTrack plugin for Typecho
 
 ## 使用方法
 
-下载仓库，文件夹名更改为`SpiderTrack`，上传文件夹到Typecho的`usr/plugins`，后台启用插件即可
+下载仓库，文件夹名更改为`SpiderTracker`，上传文件夹到Typecho的`usr/plugins`，后台启用插件即可
 
 ## 博客链接
 

@@ -3,7 +3,7 @@
 /**
  * 蜘蛛来访跟踪插件，记录蜘蛛爬行的时间及其网址
  *
- * @package SpiderTrack
+ * @package SpiderTracker
  * @author  DamonHu
  * @version 3.0.0
  * @update: 2024.03.14
@@ -13,21 +13,21 @@ if (!defined('__TYPECHO_ROOT_DIR__')) {
     exit;
 }
 
-class SpiderTrack_Plugin implements Typecho_Plugin_Interface
+class SpiderTracker_Plugin implements Typecho_Plugin_Interface
 {
     public static function activate()
     {
-        SpiderTrack_Util::activate();
+        SpiderTracker_Util::activate();
     }
 
     public static function deactivate()
     {
-        SpiderTrack_Util::deactivate();
+        SpiderTracker_Util::deactivate();
     }
 
     public static function config(Typecho_Widget_Helper_Form $form)
     {
-        $bots = SpiderTrack_Util::defaultBotsList();
+        $bots = SpiderTracker_Util::defaultBotsList();
 
         $botList = new Typecho_Widget_Helper_Form_Element_Checkbox(
 			'botList', $bots, ['baidu', 'google', 'sogou', 'youdao', 'soso', 'bing', 'yahoo', '360'],

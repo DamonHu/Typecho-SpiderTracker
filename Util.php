@@ -3,7 +3,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) {
     exit;
 }
 
-class SpiderTrack_Util
+class SpiderTracker_Util
 {
 
 
@@ -14,11 +14,11 @@ class SpiderTrack_Util
      */
     public static function activate()
     {
-        Helper::addPanel(1, 'SpiderTrack/Logs.php', '蜘蛛日志', '查看蜘蛛日志', 'administrator');
-        Helper::addAction('robots-logs-edit', 'SpiderTrack_Widget');
-        Typecho_Plugin::factory('Widget_Archive')->header = array('SpiderTrack_Util', 'isBot');
+        Helper::addPanel(1, 'SpiderTracker/Logs.php', '蜘蛛日志', '查看蜘蛛日志', 'administrator');
+        Helper::addAction('robots-logs-edit', 'SpiderTracker_Widget');
+        Typecho_Plugin::factory('Widget_Archive')->header = array('SpiderTracker_Util', 'isBot');
         self::install();
-        return '插件启用成功。请进行<a href="options-plugin.php?config=SpiderTrack">初始化设置</a>';
+        return '插件启用成功。请进行<a href="options-plugin.php?config=SpiderTracker">初始化设置</a>';
     }
 
     /**
@@ -28,11 +28,11 @@ class SpiderTrack_Util
      */
     public static function deactivate()
     {
-        $config = Typecho_Widget::widget('Widget_Options')->plugin('SpiderTrack');
+        $config = Typecho_Widget::widget('Widget_Options')->plugin('SpiderTracker');
         $db = Typecho_Db::get();
-        $db->query($db->delete('table.options')->where('table.options.name = ? AND table.options.user = ?', 'license:SpiderTrack', 0));
+        $db->query($db->delete('table.options')->where('table.options.name = ? AND table.options.user = ?', 'license:SpiderTracker', 0));
         $isDrop = $config->isDrop;
-        Helper::removePanel(1, 'SpiderTrack/Logs.php');
+        Helper::removePanel(1, 'SpiderTracker/Logs.php');
         Helper::removeAction('robots-logs-edit');
         if ($isDrop == 1) {
             $prefix = $db->getPrefix();
@@ -190,6 +190,6 @@ class SpiderTrack_Util
      */
     public static function getConfig()
     {
-        return Typecho_Widget::widget('Widget_Options')->plugin('SpiderTrack');
+        return Typecho_Widget::widget('Widget_Options')->plugin('SpiderTracker');
     }
 }

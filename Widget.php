@@ -2,7 +2,7 @@
 if (!defined('__TYPECHO_ROOT_DIR__')) {
     exit;
 }
-class SpiderTrack_Widget extends Typecho_Widget implements Widget_Interface_Do
+class SpiderTracker_Widget extends Typecho_Widget implements Widget_Interface_Do
 {
     /**
      * 全局选项
@@ -93,7 +93,7 @@ class SpiderTrack_Widget extends Typecho_Widget implements Widget_Interface_Do
         $this->user = $this->widget('Widget_User');
         $this->security = $this->widget('Widget_Security');
 
-        $this->bots = SpiderTrack_Util::getBotsList();
+        $this->bots = SpiderTracker_Util::getBotsList();
     }
     public function select()
     {
@@ -108,7 +108,7 @@ class SpiderTrack_Widget extends Typecho_Widget implements Widget_Interface_Do
     public function execute()
     {
         /** 初始化分页变量 */
-        $pageSize = SpiderTrack_Util::getConfig()->pageSize;
+        $pageSize = SpiderTracker_Util::getConfig()->pageSize;
         $pageSize = intval($pageSize) > 0 ? $pageSize : 20;
         $this->parameter->setDefault(array(
             'pageSize' => $pageSize,
