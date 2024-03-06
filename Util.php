@@ -92,6 +92,11 @@ class SpiderTrack_Util
         }
     }
 
+    public static function isGeoAvailable()
+    {
+        return self::getConfig()->isGeoAvailable;
+    }
+
     /**
      * 蜘蛛记录函数
      *
@@ -176,7 +181,7 @@ class SpiderTrack_Util
     }
 
     /**
-     * 湖区插件配置
+     * 获取插件配置
      *
      * @return Widget_Options
      */

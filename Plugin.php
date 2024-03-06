@@ -51,9 +51,21 @@ class SpiderTrack_Plugin implements Typecho_Plugin_Interface
             '删除数据表',
             '请选择是否在禁用插件时，删除日志数据表'
         );
+
+        $isGeoAvailable = new Typecho_Widget_Helper_Form_Element_Radio(
+            'isGeoAvailable',
+            array(
+                '1' => '显示',
+                '0' => '不显示'
+            ),
+            '0',
+            '蜘蛛IP位置查询',
+            '列表页是否显示IP地理位置查询按钮'
+        );
         $form->addInput($botList);
         $form->addInput($pageSize);
         $form->addInput($isDrop);
+        $form->addInput($isGeoAvailable);
     }
 
     public static function personalConfig(Typecho_Widget_Helper_Form $form)

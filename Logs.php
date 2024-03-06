@@ -76,7 +76,7 @@ $options = Typecho_Widget::widget('Widget_Options');
                                 <th></th>
                                 <th></th>
                                 <th>蜘蛛名称</th>
-                                <th>IP地址<a class="check-ip-location">查询位置</a></th>
+                                <th>IP地址</th>
                                 <th class="typecho-radius-topright">日期</th>
                             </tr>
                             </thead>
@@ -95,6 +95,9 @@ $options = Typecho_Widget::widget('Widget_Options');
                                         <td>
                                             <div class="robotx-ip"
                                                  data-ip="<?php $robotsArchive->ip(); ?>"><?php $robotsArchive->ip(); ?></div>
+                                                 <?php if (SpiderTrack_Util::isGeoAvailable()) : ?>
+                                                    <a class="check-ip-location">查询位置</a>
+                                                <?php endif;?>
                                             <div class="robotx-location"></div>
                                         </td>
                                         <td><?php echo date('Y-m-d H:i:s', $robotsArchive->ltime); ?></td>
