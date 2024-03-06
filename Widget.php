@@ -97,7 +97,7 @@ class SpiderTracker_Widget extends Typecho_Widget implements Widget_Interface_Do
     }
     public function select()
     {
-        return $this->db->select()->from('table.robots_logs');
+        return $this->db->select()->from('table.spider_tracker_logs');
     }
     /**
      * 执行函数
@@ -124,10 +124,10 @@ class SpiderTracker_Widget extends Typecho_Widget implements Widget_Interface_Do
         $select = $this->select();
 
         if (!empty($this->parameter->bot)) {
-            $select->where('table.robots_logs.bot = ?', $this->parameter->bot);
+            $select->where('table.spider_tracker_logs.bot = ?', $this->parameter->bot);
         }
         if (!empty($this->parameter->ip)) {
-            $select->where('table.robots_logs.ip = ?', $this->parameter->ip);
+            $select->where('table.spider_tracker_logs.ip = ?', $this->parameter->ip);
         }
 
         /** 如果已经提前压入则直接返回 */
@@ -139,7 +139,7 @@ class SpiderTracker_Widget extends Typecho_Widget implements Widget_Interface_Do
         $this->_countSql = clone $select;
 
         /** 提交查询 */
-        $select->order('table.robots_logs.ltime', Typecho_Db::SORT_DESC)
+        $select->order('table.spider_tracker_logs.ltime', Typecho_Db::SORT_DESC)
             ->page($this->_currentPage, $this->parameter->pageSize);
 
         $this->db->fetchAll($select, array($this, 'push'));
@@ -211,8 +211,8 @@ class SpiderTracker_Widget extends Typecho_Widget implements Widget_Interface_Do
     public function size(Typecho_Db_Query $condition)
     {
         return $this->db->fetchObject($condition
-            ->select(array('COUNT(DISTINCT table.robots_logs.lid)' => 'num'))
-            ->from('table.robots_logs')
+            ->select(array('COUNT(DISTINCT table.spider_tracker_logs.lid)' => 'num'))
+            ->from('table.spider_tracker_logs')
             ->cleanAttribute('group'))->num;
     }
 
@@ -225,7 +225,7 @@ class SpiderTracker_Widget extends Typecho_Widget implements Widget_Interface_Do
             // 删除插件接口
             $this->pluginHandle()->deleteLogs($log, $this);
 
-            $result = $this->db->query($this->db->delete('table.robots_logs')->where('table.robots_logs.lid = ?', $log));
+            $result = $this->db->query($this->db->delete('table.spider_tracker_logs')->where('table.spider_tracker_logs.lid = ?', $log));
             if ($result)
                 $deleteCount++;
         }
