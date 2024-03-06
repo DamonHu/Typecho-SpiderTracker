@@ -57,7 +57,10 @@ class SpiderTrack_Util
         'soso' => '搜搜',
         'bing' => '必应',
         'yahoo' => '雅虎',
-        '360' => '360搜索'
+        '360' => '360搜索',
+        'yisou' => '神马搜索',
+        'byte' => '头条搜索',
+        'yandex' => 'Yandex',
         );
         return $bots;
     }
@@ -111,7 +114,7 @@ class SpiderTrack_Util
             $request = Typecho_Request::getInstance();
             $useragent = strtolower($request->getAgent());
             foreach ($botList as $key => $value) {
-                if (strpos($useragent, strval($key)) !== false) {
+                if (stripos($useragent, strval($key)) !== false) {
                     $bot = $key;
                     break;
                 }
