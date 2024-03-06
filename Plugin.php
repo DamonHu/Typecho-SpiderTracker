@@ -1,13 +1,13 @@
 <?php
 
 /**
- * 蜘蛛来访日志插件，记录蜘蛛爬行的时间及其网址
+ * 蜘蛛来访跟踪插件，记录蜘蛛爬行的时间及其网址
  *
  * @package SpiderTrack
- * @author  Ryan, YoviSun, Shion
- * @version 2.0.6
- * @update: 2021.08.14
- * @link http://doufu.ru
+ * @author  DamonHu
+ * @version 3.0.0
+ * @update: 2024.03.14
+ * @link https://ddceo.com/blog/1261.html
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) {
     exit;
