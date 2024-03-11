@@ -59,7 +59,7 @@ $options = Typecho_Widget::widget('Widget_Options');
                 <form class="operate-form" method="post"
                       action="<?php $options->adminUrl('extending.php?panel=SpiderTracker%2FLogs.php'); ?>">
                     <div class="typecho-table-wrap">
-                        <table class="typecho-list-table">
+                        <table class="typecho-list-table" style="table-layout: auto;">
                             <colgroup>
                                 <col width="25"/>
                                 <col width="260"/>
