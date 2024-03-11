@@ -4,7 +4,7 @@ Typecho的蜘蛛访问记录插件. Spider Tracker plugin for Typecho
 
 ## 使用方法
 
-下载仓库代码，将文件夹`SpiderTracker`上传到Typecho的`usr/plugins`，后台启用插件即可。
+下载仓库代码，将文件夹命名为`SpiderTracker`上传到Typecho的`usr/plugins`，后台启用插件即可。
 
 ## 预览
 
