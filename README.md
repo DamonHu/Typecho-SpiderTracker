@@ -1,4 +1,4 @@
-# SpiderTracker
+# Spider Tracker
 
 Typecho的蜘蛛访问记录插件. Spider Tracker plugin for Typecho
 
@@ -38,4 +38,4 @@ Typecho的蜘蛛访问记录插件. Spider Tracker plugin for Typecho
 
 ## 博客链接
 
-[https://ddceo.com/blog/1261.html](https://ddceo.com/blog/1261.html)
+[https://ddceo.com/blog/1261.html](https://ddceo.com/blog/1261.html) 
