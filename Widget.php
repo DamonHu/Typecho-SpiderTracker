@@ -216,18 +216,31 @@ class SpiderTracker_Widget extends Typecho_Widget implements Widget_Interface_Do
             ->cleanAttribute('group'))->num;
     }
 
-    public function deleteLogs()
+    public function deleteLogs($tag)
     {
-        $logs = $this->request->filter('int')->getArray('lid');
+        $current_timestamp = time();
         $deleteCount = 0;
-
-        foreach ($logs as $log) {
-            // 删除插件接口
-            $this->pluginHandle()->deleteLogs($log, $this);
-
-            $result = $this->db->query($this->db->delete('table.spider_tracker_logs')->where('table.spider_tracker_logs.lid = ?', $log));
+        if ($tag == 0) {
+            $logs = $this->request->filter('int')->getArray('lid');
+            $result = $this->db->query($this->db->delete('table.spider_tracker_logs')->where('table.spider_tracker_logs.lid IN ?', $logs));
             if ($result)
-                $deleteCount++;
+            $deleteCount++;
+        } else if ($tag == 1) {
+            $result = $this->db->query($this->db->delete('table.spider_tracker_logs'));
+            if ($result)
+            $deleteCount++;
+        } else if ($tag == 2) {
+            $result = $this->db->query($this->db->delete('table.spider_tracker_logs')->where('table.spider_tracker_logs.ltime < ?', $current_timestamp - 24 * 60 * 60));
+            if ($result)
+            $deleteCount++;
+        } else if ($tag == 3) {
+            $result = $this->db->query($this->db->delete('table.spider_tracker_logs')->where('table.spider_tracker_logs.ltime < ?', $current_timestamp - 7 * 24 * 60 * 60));
+            if ($result)
+            $deleteCount++;
+        }else if ($tag == 4) {
+            $result = $this->db->query($this->db->delete('table.spider_tracker_logs')->where('table.spider_tracker_logs.ltime < ?', $current_timestamp - 30 * 24 * 60 * 60));
+            if ($result)
+            $deleteCount++;
         }
 
 
@@ -242,7 +255,11 @@ class SpiderTracker_Widget extends Typecho_Widget implements Widget_Interface_Do
     public function action()
     {
         $this->security->protect();
-        $this->on($this->request->is('do=delete'))->deleteLogs();
+        $this->on($this->request->is('do=delete'))->deleteLogs(0); 
+        $this->on($this->request->is('do=deleteAll'))->deleteLogs(1); 
+        $this->on($this->request->is('do=deleteDay'))->deleteLogs(2); 
+        $this->on($this->request->is('do=deleteWeek'))->deleteLogs(3); 
+        $this->on($this->request->is('do=deleteMonth'))->deleteLogs(4); 
         $this->response->goBack();
     }
 }

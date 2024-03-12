@@ -23,26 +23,35 @@ $options = Typecho_Widget::widget('Widget_Options');
             <div class="col-mb-12 typecho-list">
                 <div class="typecho-list-operate clearfix">
                     <form method="get" action="<?php $options->adminUrl('extending.php'); ?>">
-                        <input type="hidden" name="panel" value="SpiderTracker/Logs.php"/>
-                        <div class="operate">
-                            <label><i class="sr-only"><?php _e('全选'); ?></i><input type="checkbox"
-                                                                                   class="typecho-table-select-all"/></label>
+                        <input type="hidden" name="panel" value="SpiderTracker/Logs.php" />
+                        <div class="operate" style="margin: 10px;">
+                            <label><i class="sr-only"><?php _e('全选'); ?></i><input type="checkbox" class="typecho-table-select-all" /></label>
                             <div class="btn-group btn-drop">
-                                <button class="btn dropdown-toggle btn-s" type="button"><i
-                                            class="sr-only"><?php _e('操作'); ?></i><?php _e('选中项'); ?> <i
-                                            class="i-caret-down"></i></button>
+                                <button class="btn dropdown-toggle btn-s" type="button"><i class="sr-only"><?php _e('操作'); ?></i><?php _e('选中项'); ?> <i class="i-caret-down"></i></button>
                                 <ul class="dropdown-menu">
-                                    <li><a lang="<?php _e('你确认要删除这些记录吗?'); ?>"
-                                           href="<?php $security->index('/action/robots-logs-edit?do=delete'); ?>"><?php _e('删除'); ?></a>
+                                    <li><a lang="<?php _e('你确认要删除这些记录吗?'); ?>" href="<?php $security->index('/action/robots-logs-edit?do=delete'); ?>"><?php _e('删除'); ?></a>
                                     </li>
                                 </ul>
                             </div>
                         </div>
-                        <div class="search" role="search">
+                        <div class="operate" style="margin: 10px;">
+                            <div class="btn-group btn-drop">
+                                <button class="btn dropdown-toggle btn-s" type="button"><i class="sr-only"><?php _e('操作'); ?></i><?php _e('快速清理'); ?> <i class="i-caret-down"></i></button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="search-btn btn btn-s" style="line-height: 28px;" lang="<?php _e('你确认要清空全部数据?'); ?>" href="<?php $security->index('/action/robots-logs-edit?do=deleteAll'); ?>"><?php _e('清空全部数据'); ?></a>
+                                    </li>
+                                    <li><a class="search-btn btn btn-s" style="line-height: 28px;" lang="<?php _e('你确认要清空24小时前记录吗?'); ?>" href="<?php $security->index('/action/robots-logs-edit?do=deleteDay'); ?>"><?php _e('清空24小时前数据'); ?></a>
+                                    </li>
+                                    <li><a class="search-btn btn btn-s" style="line-height: 28px;" lang="<?php _e('你确认要清空一周前记录吗?'); ?>" href="<?php $security->index('/action/robots-logs-edit?do=deleteWeek'); ?>"><?php _e('清空一周前数据'); ?></a>
+                                    </li>
+                                    <li><a class="search-btn btn btn-s" style="line-height: 28px;" lang="<?php _e('你确认要清空一月前记录吗?'); ?>" href="<?php $security->index('/action/robots-logs-edit?do=deleteMonth'); ?>"><?php _e('清空一月前数据'); ?></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="search" style="margin: 10px;" role="search">
                             <div class="search-ip-group">
-                                <input type="text" class="search-ip text-s"
-                                       value="<?php echo htmlspecialchars($request->ip); ?>" name="ip"
-                                       placeholder="<?php _e("请输入 IP 搜索"); ?>"/>
+                                <input type="text" class="search-ip text-s" value="<?php echo htmlspecialchars($request->ip); ?>" name="ip" placeholder="<?php _e("请输入 IP 搜索"); ?>" />
                                 <a class="clear-search-ip" href="#" title="<?php _e("取消 IP 筛选"); ?>">x</a>
                             </div>
                             <select class="search-bot" name="bot">
@@ -56,75 +65,65 @@ $options = Typecho_Widget::widget('Widget_Options');
                     </form>
                 </div>
 
-                <form class="operate-form" method="post"
-                      action="<?php $options->adminUrl('extending.php?panel=SpiderTracker%2FLogs.php'); ?>">
+                <form class="operate-form" method="post" action="<?php $options->adminUrl('extending.php?panel=SpiderTracker%2FLogs.php'); ?>">
                     <div class="typecho-table-wrap">
                         <table class="typecho-list-table" style="table-layout: auto;">
                             <colgroup>
-                                <col width="25"/>
-                                <col width="260"/>
-                                <col width="60"/>
-                                <col width="30"/>
-                                <col width="110"/>
-                                <col width="205"/>
-                                <col width="150"/>
+                                <col width="25" />
+                                <col width="260" />
+                                <col width="60" />
+                                <col width="30" />
+                                <col width="110" />
+                                <col width="205" />
+                                <col width="150" />
                             </colgroup>
                             <thead>
-                            <tr>
-                                <th class="nodrag"></th>
-                                <th>受访地址</th>
-                                <th></th>
-                                <th></th>
-                                <th>蜘蛛名称</th>
-                                <th>IP地址</th>
-                                <th class="typecho-radius-topright">日期</th>
-                            </tr>
+                                <tr>
+                                    <th class="nodrag"></th>
+                                    <th>受访地址</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th>蜘蛛名称</th>
+                                    <th>IP地址</th>
+                                    <th class="typecho-radius-topright">日期</th>
+                                </tr>
                             </thead>
                             <tbody>
-                            <?php if ($robotsArchive->have()) : ?>
-                                <?php while ($robotsArchive->next()) : ?>
-                                    <tr id="<?php $robotsArchive->theId(); ?>" class="even">
-                                        <td><input type="checkbox" value="<?php $robotsArchive->lid(); ?>"
-                                                   name="lid[]"/></td>
-                                        <td colspan="2"><a
-                                                    href="<?php echo str_replace("%23", "#", $robotsArchive->url); ?>"><?php echo urldecode(str_replace("%23", "#", $robotsArchive->url)); ?></a>
+                                <?php if ($robotsArchive->have()) : ?>
+                                    <?php while ($robotsArchive->next()) : ?>
+                                        <tr id="<?php $robotsArchive->theId(); ?>" class="even">
+                                            <td><input type="checkbox" value="<?php $robotsArchive->lid(); ?>" name="lid[]" /></td>
+                                            <td colspan="2"><a href="<?php echo str_replace("%23", "#", $robotsArchive->url); ?>"><?php echo urldecode(str_replace("%23", "#", $robotsArchive->url)); ?></a>
+                                            </td>
+                                            <td></td>
+                                            <td data-bot="<?php $robotsArchive->bot(); ?>" class="robotx-bot-name"><?php $robotsArchive->botName(); ?></td>
+                                            <td>
+                                                <div class="robotx-ip" data-ip="<?php $robotsArchive->ip(); ?>"><?php $robotsArchive->ip(); ?></div>
+                                                <?php if (SpiderTracker_Util::isGeoAvailable()) : ?>
+                                                    <a class="check-ip-location" onclick="showIpLocation(this, '<?php $robotsArchive->ip(); ?>')" href="#">查询IP位置</a>
+                                                <?php endif; ?>
+                                                <div class="robotx-location"></div>
+                                            </td>
+                                            <td><?php echo date('Y-m-d H:i:s', $robotsArchive->ltime); ?></td>
+                                        </tr>
+                                    <?php endwhile; ?>
+                                <?php else : ?>
+                                    <tr class="even">
+                                        <td colspan="8">
+                                            <h6 class="typecho-list-table-title"><?php _e('当前无蜘蛛日志'); ?></h6>
                                         </td>
-                                        <td></td>
-                                        <td data-bot="<?php $robotsArchive->bot(); ?>"
-                                            class="robotx-bot-name"><?php $robotsArchive->botName(); ?></td>
-                                        <td>
-                                            <div class="robotx-ip"
-                                                 data-ip="<?php $robotsArchive->ip(); ?>"><?php $robotsArchive->ip(); ?></div>
-                                                 <?php if (SpiderTracker_Util::isGeoAvailable()) : ?>
-                                                    <a class="check-ip-location" onclick="showIpLocation(this, '<?php $robotsArchive->ip(); ?>')"
-                                                        href="#" >查询IP位置</a>
-                                                <?php endif;?>
-                                            <div class="robotx-location"></div>
-                                        </td>
-                                        <td><?php echo date('Y-m-d H:i:s', $robotsArchive->ltime); ?></td>
                                     </tr>
-                                <?php endwhile; ?>
-                            <?php else : ?>
-                                <tr class="even">
-                                    <td colspan="8">
-                                        <h6 class="typecho-list-table-title"><?php _e('当前无蜘蛛日志'); ?></h6>
-                                    </td>
-                                </tr>
-                            <?php endif; ?>
+                                <?php endif; ?>
                             </tbody>
                         </table>
                     </div>
                     <div class="typecho-list-operate clearfix">
                         <div class="operate">
-                            <label><i class="sr-only"><?php _e('全选'); ?></i><input type="checkbox"
-                                                                                   class="typecho-table-select-all"/></label>
+                            <label><i class="sr-only"><?php _e('全选'); ?></i><input type="checkbox" class="typecho-table-select-all" /></label>
                             <div class="btn-group btn-drop">
-                                <button class="btn dropdown-toggle btn-s" type="button"><i
-                                            class="sr-only"><?php _e('操作'); ?></i><?php _e('选中项'); ?> <i
-                                            class="i-caret-down"></i></button>
+                                <button class="btn dropdown-toggle btn-s" type="button"><i class="sr-only"><?php _e('操作'); ?></i><?php _e('选中项'); ?> <i class="i-caret-down"></i></button>
                                 <ul class="dropdown-menu">
-                                    <li><a lang="<?php _e('你确认要删除这些记录吗?'); ?>"
-                                           href="<?php $security->index('/action/robots-logs-edit?do=delete'); ?>"><?php _e('删除'); ?></a>
+                                    <li><a lang="<?php _e('你确认要删除这些记录吗?'); ?>" href="<?php $security->index('/action/robots-logs-edit?do=delete'); ?>"><?php _e('删除'); ?></a>
                                     </li>
                                 </ul>
                             </div>
