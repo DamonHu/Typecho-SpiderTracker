@@ -1,4 +1,4 @@
-# Typecho-SpiderTracker
+# SpiderTracker
 
 Typecho的蜘蛛访问记录插件. Spider Tracker plugin for Typecho
 
