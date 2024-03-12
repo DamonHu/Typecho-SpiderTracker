@@ -36,15 +36,15 @@ $options = Typecho_Widget::widget('Widget_Options');
                         </div>
                         <div class="operate" style="margin: 10px;">
                             <div class="btn-group btn-drop">
-                                <button class="btn dropdown-toggle btn-s" type="button"><i class="sr-only"><?php _e('操作'); ?></i><?php _e('快速清理'); ?> <i class="i-caret-down"></i></button>
+                                <button class="btn dropdown-toggle btn-s" type="button"><?php _e('快速清理'); ?> <i class="i-caret-down"></i></button>
                                 <ul class="dropdown-menu">
-                                    <li><a class="search-btn btn btn-s" style="line-height: 28px;" lang="<?php _e('你确认要清空全部数据?'); ?>" href="<?php $security->index('/action/robots-logs-edit?do=deleteAll'); ?>"><?php _e('清空全部数据'); ?></a>
+                                    <li><a style="line-height: 28px;" lang="<?php _e('你确认要清空全部数据?'); ?>" href="<?php $security->index('/action/robots-logs-edit?do=deleteAll'); ?>"><?php _e('清空全部数据'); ?></a>
                                     </li>
-                                    <li><a class="search-btn btn btn-s" style="line-height: 28px;" lang="<?php _e('你确认要清空24小时前记录吗?'); ?>" href="<?php $security->index('/action/robots-logs-edit?do=deleteDay'); ?>"><?php _e('清空24小时前数据'); ?></a>
+                                    <li><a style="line-height: 28px;" lang="<?php _e('你确认要清空24小时前记录吗?'); ?>" href="<?php $security->index('/action/robots-logs-edit?do=deleteDay'); ?>"><?php _e('清空24小时前数据'); ?></a>
                                     </li>
-                                    <li><a class="search-btn btn btn-s" style="line-height: 28px;" lang="<?php _e('你确认要清空一周前记录吗?'); ?>" href="<?php $security->index('/action/robots-logs-edit?do=deleteWeek'); ?>"><?php _e('清空一周前数据'); ?></a>
+                                    <li><a style="line-height: 28px;" lang="<?php _e('你确认要清空一周前记录吗?'); ?>" href="<?php $security->index('/action/robots-logs-edit?do=deleteWeek'); ?>"><?php _e('清空一周前数据'); ?></a>
                                     </li>
-                                    <li><a class="search-btn btn btn-s" style="line-height: 28px;" lang="<?php _e('你确认要清空一月前记录吗?'); ?>" href="<?php $security->index('/action/robots-logs-edit?do=deleteMonth'); ?>"><?php _e('清空一月前数据'); ?></a>
+                                    <li><a style="line-height: 28px;" lang="<?php _e('你确认要清空一月前记录吗?'); ?>" href="<?php $security->index('/action/robots-logs-edit?do=deleteMonth'); ?>"><?php _e('清空一月前数据'); ?></a>
                                     </li>
                                 </ul>
                             </div>
