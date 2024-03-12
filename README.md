@@ -29,6 +29,7 @@ Typecho的蜘蛛访问记录插件. Spider Tracker plugin for Typecho
 * ip查询方式修改为单项查询，避免批量数据封号问题
 * 增加头条搜索、Yandex搜索、神马搜索记录
 * 增加快捷清理功能，可快速选择清理范围
+* 日志页面适配手机版
 
 ### 鸣谢
 
