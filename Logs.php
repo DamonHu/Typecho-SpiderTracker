@@ -51,7 +51,7 @@ $options = Typecho_Widget::widget('Widget_Options');
                         </div>
                         <div class="search" style="margin: 10px;" role="search">
                             <div class="search-ip-group">
-                                <input type="text" class="search-ip text-s" value="<?php echo htmlspecialchars($request->ip); ?>" name="ip" placeholder="<?php _e("请输入 IP 搜索"); ?>" />
+                                <input type="text" class="search-ip text-s" value="<?php echo htmlspecialchars($request->ip ?? ''); ?>" name="ip" placeholder="<?php _e("请输入 IP 搜索"); ?>"/>
                                 <a class="clear-search-ip" href="#" title="<?php _e("取消 IP 筛选"); ?>">x</a>
                             </div>
                             <select class="search-bot" name="bot">
