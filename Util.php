@@ -36,7 +36,7 @@ class SpiderTracker_Util
         Helper::removeAction('robots-logs-edit');
         if ($isDrop == 1) {
             $prefix = $db->getPrefix();
-            $db->query("DROP TABLE `${prefix}spider_tracker_logs`", Typecho_Db::WRITE);
+            $db->query("DROP TABLE `{$prefix}spider_tracker_logs`", Typecho_Db::WRITE);
             return "插件已被禁用，数据表已未清除";
         }
         return "插件已被禁用，数据表未被清除";
