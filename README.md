@@ -8,7 +8,7 @@ Typecho的蜘蛛访问记录插件. Spider Tracker plugin for Typecho
 
 ## 反馈
 
-如果有问题可以在该github仓库直接提issue或者在我博客文章下留言即可：[https://dongge.org/blog/1261.html](https://dongge.org/blog/1261.html)
+如果有问题可以在该github仓库直接提issue或者在我博客文章下留言即可：[https://blog.hudd.cn/1261.html](https://blog.hudd.cn/1261.html)
 
 ## 预览
 
