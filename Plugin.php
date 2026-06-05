@@ -5,9 +5,9 @@
  *
  * @package SpiderTracker
  * @author  DamonHu
- * @version 3.0.0
- * @update: 2024.03.14
- * @link https://ddceo.com/blog/1261.html
+ * @version 3.0.1
+ * @update: 2026.06.05
+ * @link https://blog.hudd.cn/1261.html
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) {
     exit;
