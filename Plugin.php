@@ -5,7 +5,7 @@
  *
  * @package SpiderTracker
  * @author  DamonHu
- * @version 3.0.1
+ * @version 1.2.2
  * @update: 2026.06.05
  * @link https://blog.hudd.cn/1261.html
  */
