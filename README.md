@@ -38,4 +38,4 @@ Typecho的蜘蛛访问记录插件. Spider Tracker plugin for Typecho
 
 ## 博客链接
 
-[https://dongge.org/blog/1261.html](https://dongge.org/blog/1261.html)
+[https://blog.hudd.cn/1261.html](https://blog.hudd.cn/1261.html)
