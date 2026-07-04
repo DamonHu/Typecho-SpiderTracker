@@ -63,10 +63,10 @@ class SpiderTracker_Util
         'yandex' => 'Yandex',
         'gpt' => 'ChatGPT',
         'claude' => 'Claude',
-        'apple' => 'Apple',
+        'applebot' => 'Apple',
         'deepseek' => 'DeepSeek',
         'duckduck' => 'DuckDuckGO',
-        'ai' => '其他AI',
+        '-ai' => '其他AI',
         'spider' => '其他爬虫',
         );
         return $bots;
