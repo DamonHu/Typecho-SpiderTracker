@@ -4,10 +4,10 @@
  * 蜘蛛来访跟踪插件，记录蜘蛛爬行的时间及其网址
  *
  * @package SpiderTracker
- * @author  DamonHu
- * @version 1.2.2
- * @update: 2026.06.05
- * @link https://blog.hudd.cn/1261.html
+ * @author  Damon胡东东
+ * @version 1.2.3
+ * @update: 2026.07.04
+ * @link https://github.com/DamonHu/Typecho-SpiderTracker
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) {
     exit;

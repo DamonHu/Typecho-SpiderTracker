@@ -61,6 +61,13 @@ class SpiderTracker_Util
         'yisou' => '神马搜索',
         'byte' => '头条搜索',
         'yandex' => 'Yandex',
+        'gpt' => 'ChatGPT',
+        'claude' => 'Claude',
+        'apple' => 'Apple',
+        'deepseek' => 'DeepSeek',
+        'duckduck' => 'DuckDuckGO',
+        'ai' => '其他AI',
+        'spider' => '其他爬虫',
         );
         return $bots;
     }
