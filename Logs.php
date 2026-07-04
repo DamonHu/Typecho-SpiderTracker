@@ -71,19 +71,17 @@ $options = Typecho_Widget::widget('Widget_Options');
                             <colgroup>
                                 <col width="25" />
                                 <col width="260" />
-                                <col width="60" />
-                                <col width="30" />
                                 <col width="110" />
-                                <col width="205" />
+                                <col width="200" />
+                                <col width="150" />
                                 <col width="150" />
                             </colgroup>
                             <thead>
                                 <tr>
                                     <th class="nodrag"></th>
                                     <th>受访地址</th>
-                                    <th></th>
-                                    <th></th>
                                     <th>蜘蛛名称</th>
+                                    <th>User-Agent</th>
                                     <th>IP地址</th>
                                     <th class="typecho-radius-topright">日期</th>
                                 </tr>
@@ -93,10 +91,10 @@ $options = Typecho_Widget::widget('Widget_Options');
                                     <?php while ($robotsArchive->next()) : ?>
                                         <tr id="<?php $robotsArchive->theId(); ?>" class="even">
                                             <td><input type="checkbox" value="<?php $robotsArchive->lid(); ?>" name="lid[]" /></td>
-                                            <td colspan="2"><a href="<?php echo str_replace("%23", "#", $robotsArchive->url); ?>"><?php echo urldecode(str_replace("%23", "#", $robotsArchive->url)); ?></a>
+                                            <td><a href="<?php echo str_replace("%23", "#", $robotsArchive->url); ?>"><?php echo urldecode(str_replace("%23", "#", $robotsArchive->url)); ?></a>
                                             </td>
-                                            <td></td>
                                             <td data-bot="<?php $robotsArchive->bot(); ?>" class="robotx-bot-name"><?php $robotsArchive->botName(); ?></td>
+                                            <td class="robotx-bot-ua"><?php $robotsArchive->ua(); ?></td>
                                             <td>
                                                 <div class="robotx-ip" data-ip="<?php $robotsArchive->ip(); ?>"><?php $robotsArchive->ip(); ?></div>
                                                 <?php if (SpiderTracker_Util::isGeoAvailable()) : ?>

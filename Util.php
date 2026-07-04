@@ -86,6 +86,7 @@ class SpiderTracker_Util
             $db->query(" CREATE TABLE IF NOT EXISTS " . $robots . " (
                         lid INTEGER PRIMARY KEY,
                         bot TEXT,
+                        ua TEXT,
                         url TEXT,
                         ip TEXT,
                         ltime INTEGER)");
@@ -94,6 +95,7 @@ class SpiderTracker_Util
             $db->query("CREATE TABLE IF NOT EXISTS " . $robots . " (
                         `lid` int(10) unsigned NOT NULL auto_increment,
                         `bot` varchar(16) default NULL,
+                        `ua` varchar(512) default NULL,
                         `url` varchar(128) default NULL,
                         `ip` varchar(128) default NULL,
                         `ltime` int(10) unsigned default '0',
@@ -131,6 +133,7 @@ class SpiderTracker_Util
                 $uri = $request->getRequestUri();
                 $struct = array(
                     'bot' => $bot,
+                    'ua' => $useragent,
                     'url' => strlen($uri) > 128 ? _t('URI超长，请扩充数据库字段') : $uri,
                     'ip' => self::getRealIp(),
                     'ltime' => self::getTimeStamp(),
